@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class StringCalculator {
-    public void main(){
+    public void main() {
         String s = inputString();
         int result = process(s);
         System.out.println(result);
@@ -12,20 +12,27 @@ public class StringCalculator {
 
         int result = toInt(values[0]);
         for (int i = 1; i < values.length - 1; i++) {
-            if (values[i].equals("+")) {
-                result += toInt(values[i + 1]);
-            }
-            if (values[i].equals("-")) {
-                result -= toInt(values[i + 1]);
-            }
-            if (values[i].equals("*")) {
-                result *= toInt(values[i + 1]);
-            }
-            if (values[i].equals("/")) {
-                result /= toInt(values[i + 1]);
-            }
+            result = calculate(result, values[i], values[i + 1]);
         }
         return result;
+    }
+
+    public int calculate(int acc, String operator, String number) {
+        if (operator.equals("+")) {
+            return acc + toInt(number);
+        }
+        if (operator.equals("-")) {
+            return acc - toInt(number);
+        }
+
+        if (operator.equals("*")) {
+            return acc * toInt(number);
+        }
+
+        if (operator.equals("/")) {
+            return acc / toInt(number);
+        }
+        return acc;
     }
 
     public String inputString() {
