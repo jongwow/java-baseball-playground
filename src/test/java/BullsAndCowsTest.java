@@ -18,9 +18,20 @@ class BullsAndCowsTest {
     }
 
     @Test
-    void countBallOrStrike(){
-        Bulls bulls = new Bulls(1, 2, 4);
+    void compare(){
+        Bulls bulls = new Bulls(7,1,3);
 
+        String compare1 = bulls.compare("123");
+        String compare2 = bulls.compare("145");
+        String compare3 = bulls.compare("671");
+        String compare4 = bulls.compare("216");
+        String compare5 = bulls.compare("713");
 
+        assertThat(compare1).isEqualTo("BNS");
+        assertThat(compare2).isEqualTo("BNN");
+        assertThat(compare3).isEqualTo("NBB");
+        assertThat(compare4).isEqualTo("NSN");
+        assertThat(compare5).isEqualTo("SSS");
     }
+
 }

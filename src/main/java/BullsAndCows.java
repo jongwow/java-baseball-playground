@@ -40,7 +40,7 @@ class Bulls {
         if (isStrike(index, input - '0')) {
             return 'S';
         }
-        if (isBall(input)) {
+        if (isBall(input - '0')) {
             return 'B';
         }
         return 'N';
