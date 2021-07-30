@@ -35,4 +35,48 @@ class Bulls {
     public boolean isBall(int inputNumber) {
         return first == inputNumber || second == inputNumber || third == inputNumber;
     }
+
+    private char compareOne(int index, char input){
+        if (isStrike(index, input - '0')) {
+            return 'S';
+        }
+        if (isBall(input)) {
+            return 'B';
+        }
+        return 'N';
+    }
+
+
+    public String compare(String userNumber){
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < userNumber.length(); i++) {
+            result.append(compareOne(i, userNumber.charAt(i)));
+        }
+        return result.toString();
+    }
+
+    public String resultView(String result){
+        int numOfBall = 0;
+        int numOfStrike = 0;
+        for (int i = 0; i < result.length(); i++) {
+            if(result.charAt(i) == 'S'){
+                numOfStrike += 1;
+            }
+            if(result.charAt(i) == 'B'){
+                numOfBall += 1;
+            }
+        }
+        StringBuilder stringBuilderBall = new StringBuilder();
+        StringBuilder stringBuilderStrike = new StringBuilder();
+        if(numOfBall > 0){
+            stringBuilderBall.append(numOfBall).append("볼");
+        }
+        if(numOfStrike > 0){
+            stringBuilderStrike.append(numOfStrike).append("스트라이크");
+        }
+        String s1 = stringBuilderBall.toString();
+        String s = stringBuilderStrike.toString();
+        return s1.concat(s);
+    }
+
 }
