@@ -1,7 +1,24 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class BullsAndCows {
-
+    public void oneRound(){
+        Bulls bulls = new Bulls();
+        Scanner sc = new Scanner(System.in);
+        while(true){
+            System.out.print("숫자를 입력해주세요: ");
+            String s = sc.nextLine();
+            String compare = bulls.compare(s);
+            System.out.println(bulls.resultView(compare));
+            if (compare.equals("SSS")) {
+                System.out.println("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+                return;
+            }
+        }
+    }
+    private boolean oneTurn(){
+        return true;
+    }
 }
 
 class Bulls {
